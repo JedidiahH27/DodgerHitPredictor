@@ -1,6 +1,6 @@
 # Dodger Hit Predictor
 
-In this notebook, I explore predictive models aimed at forecasting whether Mookie Betts, Shohei Ohtani, and Freddie
+In this notebook (best viewed here: https://nbviewer.org/github/JedidiahH27/DodgerHitPredictor/blob/main/HitPredictor.ipynb), I explore predictive models aimed at forecasting whether Mookie Betts, Shohei Ohtani, and Freddie
 Freeman will record a hit in MLB games. This analysis supports wagers on player performances, a feature offered by
 platforms such as FanDuel.
 
