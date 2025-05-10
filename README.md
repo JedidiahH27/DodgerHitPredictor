@@ -1,28 +1,63 @@
-# Dodger Hit Predictor
+⚾ Dodger Hit Predictor
 
-In this notebook (best viewed here: https://nbviewer.org/github/JedidiahH27/DodgerHitPredictor/blob/main/HitPredictor.ipynb), I explore predictive models aimed at forecasting whether Mookie Betts, Shohei Ohtani, and Freddie
-Freeman will record a hit in MLB games. This analysis supports wagers on player performances, a feature offered by
-platforms such as FanDuel.
+This project explores predictive models aimed at forecasting whether Mookie Betts, Shohei Ohtani, or Freddie Freeman will record a hit in a given MLB game. These predictions can inform bets placed on platforms such as FanDuel, which offer markets on individual player performances.
 
-## Introduction
-FanDuel allows users to bet on various sports outcomes, including whether a specific MLB player will achieve a hit during a
-game. My personal experiences with these bets have yielded mixed results, which I attribute primarily to luck. Recognizing
-the inherent risks posed by the Law of Large Numbers, I am compelled to develop a more systematic and reliable predictive
-model to enhance the accuracy of my betting strategies over the long term.
+📌 Introduction
+FanDuel allows users to wager on various sports outcomes—including whether a specific MLB player will get a hit during a game. My own experiences with these bets have shown inconsistent results, often skewed by luck.
 
-## Rationale For Player Selection
-The focus on Mookie Betts, Shohei Ohtani, and Freddie Freeman is twofold. Firstly, as a Dodgers enthusiast, my betting
-interest naturally gravitates towards games featuring this team, making the choice to analyze these players both practical
-and enjoyable. Secondly, their secured long-term contracts with the Dodgers ensure a stable dataset for ongoing analysis.
-This stability is critical for developing a robust model that requires consistent performance data over multiple seasons.
-By concentrating on these three prominent Dodgers players, I aim to create specialized models that can offer insights
-specific to their performance trends, thereby providing a strategic edge in sports betting focused on these athletes.
+To address this and improve my long-term strategy, I created a systematic approach grounded in data science and baseball analytics. This project leverages machine learning to enhance the predictability of hit outcomes, reducing the reliance on chance.
 
-## Data Collection Methodology
-For the purpose of this project, the primary dataset will be sourced from pitch-level and game-level records, which provide
-comprehensive details relevant to predicting the outcomes of a player's plate appearance. This data is mcollected by
-Statcast, a high-resolution, automated tool developed to analyze player movements and game dynamics in Major League
-Baseball.
-To facilitate efficient and effective data retrieval, I will utilize the pybaseball library, a widely recognized tool in the baseball
-analytics community. This library grants direct access to Statcast's database, allowing us to fetch detailed metrics such as
-pitch type, pitch velocity, player positions, hit outcomes, and other variables critical to our analysis.
+🎯 Why These Players?
+The model focuses on Mookie Betts, Shohei Ohtani, and Freddie Freeman for two main reasons:
+
+Fan Perspective: As a passionate Dodgers fan, my betting interest naturally centers around Dodgers games.
+
+Data Stability: All three players are secured with long-term contracts, offering a consistent and reliable dataset across multiple seasons—crucial for building robust predictive models.
+
+By honing in on these star athletes, the project delivers targeted insights with potential real-world betting advantages.
+
+🧠 Project Goal
+To predict the likelihood of each player recording at least one hit in an MLB game using historical data and statistical learning techniques. This model aims to:
+
+Reduce reliance on gut instinct or streaks
+
+Surface actionable insights from historical and contextual data
+
+Inform betting decisions with a more analytical foundation
+
+📊 Data Collection
+The primary dataset includes pitch-level and game-level data sourced from Statcast, MLB’s high-resolution tracking system. This data provides granular details about:
+
+Pitch type and velocity
+
+Batted ball outcomes
+
+Player positions and matchups
+
+Environmental factors (e.g., ballpark effects)
+
+To access this data efficiently, the project uses the pybaseball Python library—a well-established tool in the baseball analytics community. Pybaseball offers direct access to Statcast’s API, allowing for seamless integration into predictive pipelines.
+
+🛠️ Technologies & Tools
+Python
+
+Jupyter Notebook
+
+pybaseball (Statcast data access)
+
+pandas, NumPy (data manipulation)
+
+scikit-learn, XGBoost (predictive modeling)
+
+matplotlib, seaborn (visualizations)
+
+📈 Future Directions
+Add real-time data integration
+
+Expand to other players or teams
+
+Deploy a web interface for user-friendly access
+
+Track model performance against actual game results over time
+
+If you're a Dodgers fan, a fantasy baseball player, or a bettor looking to add analytical power to your picks, this project aims to deliver actionable insights and a bit of fun along the way.
