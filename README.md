@@ -24,6 +24,8 @@ Players face over 1 million pitches across 5 seasons.
 
 Around 27% of games end with no hits for Betts and Freeman; Ohtani is slightly worse at ~35% no-hit games.
 
+![Shohei Ohtani Hits Per Game](images/OhtaniHitsPerGame.png)
+
 Pitch outcome distributions (e.g., singles, doubles, home runs) align with expected performance from All-Stars.
 
 ## ⚙️ Modeling Approaches
@@ -40,6 +42,8 @@ Best accuracy: ~65–70%
 
 F1-scores for predicting hits: below 0.2 in all models
 
+![Feature Importance](images/FeatureImportance.png)
+
 ### 2. Pitch Location Only
 Used only plate_x and plate_z as predictors.
 
@@ -54,6 +58,8 @@ Added distance_from_center of strike zone as a new feature.
 
 Still failed to improve model performance.
 
+![Scatterplot of Pitch Location vs. xBA](images/ScatterplotPitchLocationxBA.png)
+
 ## 📈 Hitting Streak Model
 Tested whether hitting streaks (momentum or slumps) could predict next-game performance.
 
@@ -62,6 +68,8 @@ Used logistic regression with lagged hitting streaks as predictors.
 Model predicted “hit” for every instance; recall = 1.00, but precision = 0.00 for "no hit".
 
 Visualization confirmed no strong correlation between hitting streaks and future performance.
+
+![Hitting Streak vs Hit Likelihood](images/HittingStreakImportance.png)
 
 ## 🚫 Key Takeaways
 Predicting individual hits per pitch or per game is extremely difficult due to high variance.
