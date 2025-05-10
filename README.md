@@ -1,63 +1,81 @@
-# ⚾ Dodger Hit Predictor
+⚾ Dodger Hit Predictor
 
-This project explores predictive models aimed at forecasting whether Mookie Betts, Shohei Ohtani, or Freddie Freeman will record a hit in a given MLB game. These predictions can inform bets placed on platforms such as FanDuel, which offer markets on individual player performances.
+This project explores machine learning models that aim to predict whether Mookie Betts, Shohei Ohtani, or Freddie Freeman will record a hit in an MLB game. These predictions are intended to support decision-making in player prop bets—a market offered by platforms like FanDuel.
 
-## 📌 Introduction
-FanDuel allows users to wager on various sports outcomes—including whether a specific MLB player will get a hit during a game. My own experiences with these bets have shown inconsistent results, often skewed by luck.
+📌 Introduction
+FanDuel allows users to wager on outcomes like whether a specific MLB player will get a hit. My personal experiences with these bets have produced mixed results. To reduce reliance on luck, I set out to build a data-driven prediction model using pitch-level MLB data to make smarter wagers over time.
 
-To address this and improve my long-term strategy, I created a systematic approach grounded in data science and baseball analytics. This project leverages machine learning to enhance the predictability of hit outcomes, reducing the reliance on chance.
+🎯 Why These Players?
+I'm a Dodgers fan, so my focus naturally falls on Dodgers games.
 
-## 🎯 Why These Players?
-The model focuses on Mookie Betts, Shohei Ohtani, and Freddie Freeman for two main reasons:
+Betts, Ohtani, and Freeman have long-term contracts, ensuring consistent data across seasons—ideal for building reliable models.
 
-Fan Perspective: As a passionate Dodgers fan, my betting interest naturally centers around Dodgers games.
+📊 Data Collection
+Sourced via Statcast using the pybaseball library.
 
-Data Stability: All three players are secured with long-term contracts, offering a consistent and reliable dataset across multiple seasons—crucial for building robust predictive models.
+Covers pitch-level and game-level data from 2018 to 2023.
 
-By honing in on these star athletes, the project delivers targeted insights with potential real-world betting advantages.
+Includes pitch types, velocities, strike zone location, outcomes, and more.
 
-## 🧠 Project Goal
-To predict the likelihood of each player recording at least one hit in an MLB game using historical data and statistical learning techniques. This model aims to:
+Spring training and deprecated variables were filtered out to improve model relevance.
 
-Reduce reliance on gut instinct or streaks
+📉 Exploratory Data Analysis (EDA)
+Players face over 1 million pitches across 5 seasons.
 
-Surface actionable insights from historical and contextual data
+Around 27% of games end with no hits for Betts and Freeman; Ohtani is slightly worse at ~35% no-hit games.
 
-Inform betting decisions with a more analytical foundation
+Pitch outcome distributions (e.g., singles, doubles, home runs) align with expected performance from All-Stars.
 
-## 📊 Data Collection
-The primary dataset includes pitch-level and game-level data sourced from Statcast, MLB’s high-resolution tracking system. This data provides granular details about:
+⚙️ Modeling Approaches
+1. Binary Classification Models (Hit vs. No Hit)
+Models Used: Logistic Regression, Random Forest, XGBoost
 
-Pitch type and velocity
+Features: pitch location, count, pitch type, handedness
 
-Batted ball outcomes
+Issue: Class imbalance—far more “no hit” pitches than “hit” ones.
 
-Player positions and matchups
+Even after undersampling and class weighting, models struggled:
 
-Environmental factors (e.g., ballpark effects)
+Best accuracy: ~65–70%
 
-To access this data efficiently, the project uses the pybaseball Python library—a well-established tool in the baseball analytics community. Pybaseball offers direct access to Statcast’s API, allowing for seamless integration into predictive pipelines.
+F1-scores for predicting hits: below 0.2 in all models
 
-## 🛠️ Technologies & Tools
-Python
+2. Pitch Location Only
+Used only plate_x and plate_z as predictors.
 
-Jupyter Notebook
+Slight performance drop, indicating most features had low predictive power.
 
-pybaseball (Statcast data access)
+3. Expected Batting Average (xBA) Regression
+Regressed estimated_ba_using_speedangle using pitch location and spin rate.
 
-pandas, NumPy (data manipulation)
+Models performed very poorly (R² ≈ 0.01).
 
-scikit-learn, XGBoost (predictive modeling)
+Added distance_from_center of strike zone as a new feature.
 
-matplotlib, seaborn (visualizations)
+Still failed to improve model performance.
 
-## 📈 Future Directions
-Add real-time data integration
+📈 Hitting Streak Model
+Tested whether hitting streaks (momentum or slumps) could predict next-game performance.
 
-Expand to other players or teams
+Used logistic regression with lagged hitting streaks as predictors.
 
-Deploy a web interface for user-friendly access
+Model predicted “hit” for every instance; recall = 1.00, but precision = 0.00 for "no hit".
 
-Track model performance against actual game results over time
+Visualization confirmed no strong correlation between hitting streaks and future performance.
 
-If you're a Dodgers fan, a fantasy baseball player, or a bettor looking to add analytical power to your picks, this project aims to deliver actionable insights and a bit of fun along the way.
+🚫 Key Takeaways
+Predicting individual hits per pitch or per game is extremely difficult due to high variance.
+
+Even strong predictors like pitch location, count, or xBA provide little improvement.
+
+The assumption that past performance or streaks influence the next game is not supported by the data.
+
+FanDuel’s implied odds (73–74% chance of a hit) match historical frequencies well.
+
+🧠 Final Thoughts
+This project highlights the limits of prediction in high-variance scenarios like MLB batting. While the models don't (yet) outperform the market, the analytical process offers deep insight into what’s signal vs. noise in player prop betting.
+
+🛠️ Tools & Libraries
+Python, Jupyter Notebook
+
+pybaseball, scikit-learn, xgboost, pandas, plotly, matplotlib, seaborn
