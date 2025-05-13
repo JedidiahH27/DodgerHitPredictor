@@ -1,4 +1,4 @@
-# ⚾ Dodger Hit Predictor
+# ⚾ Predicting MLB At-Bat Outcomes Using Machine Learning
 
 This project explores machine learning models that aim to predict whether Mookie Betts, Shohei Ohtani, or Freddie Freeman will record a hit in an MLB game. These predictions are intended to support decision-making in player prop bets—a market offered by platforms like FanDuel.
 
